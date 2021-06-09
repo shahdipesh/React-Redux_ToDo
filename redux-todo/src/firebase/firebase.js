@@ -26,6 +26,7 @@ var firebaseConfig = {
     }
 
     export const addTask=async(id,task,uid)=>{
+      console.log("rasdk",uid);
       var docRef = await firebase.firestore().collection("users").doc(uid);
       var newTask = {id:id,task:task,isCompleted:false}
       docRef.set({"tasks":firebase.firestore.FieldValue.arrayUnion(newTask)},{merge:true})

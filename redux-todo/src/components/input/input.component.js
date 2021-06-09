@@ -21,14 +21,15 @@ export default function InputComponent() {
             {console.log("input", userObj)}
             <div class="form-group">
                 { userObj ?
-                    <input type="text" class="form-control" onChange={(e) => setTask(e)}></input>
+                    <input type="text" class="form-control" id="textField" onChange={(e) => setTask(e)}></input>
                   :<input type="text" class="form-control" disabled='disabled'></input>
                 }
                 <PlusSquare variant="primary" size={40} style={{ marginLeft: "10px", color: "#8779c5" }}
                     onClick={async () => {
+                        document.getElementById("textField").value="";
                         if (task !== "") {
                             var id = Date.now();
-                            await dispatch(addTodo({ id: id, task: task }));
+                            await dispatch(addTodo({ id: id, task: task,uid:userObj.uid }));
                             openSnackbar('Action added successfully.')
                         }
                     }} >Add</PlusSquare>

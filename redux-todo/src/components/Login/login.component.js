@@ -1,23 +1,15 @@
-import { Button } from 'react-bootstrap';
-import { ArrowBarRight } from 'react-bootstrap-icons';
+import { ArrowBarRight,EmojiSmileFill } from 'react-bootstrap-icons';
 import React from 'react';
 import firebase from '../../firebase/firebase';
 import login from '../../redux/user/user.actions';
 import { signOut } from '../../redux/user/user.actions';
 import { useDispatch, useSelector } from 'react-redux';
+import './login.css';
 
 export default function Login() {
     const userObj = useSelector((state) => state.userState.userObj);
     const dispatch = useDispatch();
-    var handleSubmitLogin = () => {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth()
-            .signInWithPopup(provider)
-            .then((result) => {
-                console.log(result.user.displayName)
-                dispatch(login(result));
-            })
-    }
+    
     var handleSubmitSignOut = () => {
         firebase.auth().signOut();
         dispatch(signOut());
@@ -25,14 +17,18 @@ export default function Login() {
     return (
         <div>
             { userObj ?
-                <div style={{fontSize:"14px",fontWeight:"bold"}}>
-                Welcome {userObj.displayName}
+            <div className="loginHeader">
+                <div className="smiley">
+            <EmojiSmileFill size={20}></EmojiSmileFill>
+            </div>
+                <div style={{fontSize:"14px",fontWeight:"bold",fontFamily:"'Courier New', Courier, monospace",color:"royalBlue"}}>
+                
+                   Welcome {userObj.displayName}
                 <ArrowBarRight size={"30px"}variant="dark" onClick={() => handleSubmitSignOut()}></ArrowBarRight>
                 </div>
-                : 
-                <div>
-                <Button variant="dark" onClick={() => handleSubmitLogin()}>Login with Google</Button>
-               </div>
+                </div>
+                : null
+ 
             }
         </div>
     )

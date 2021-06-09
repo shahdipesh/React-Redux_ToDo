@@ -30,8 +30,13 @@ export default function TaskComponent(props) {
                 <small>Delete</small>
             </Toast.Header>
 
-            <Toast.Body className="wrapper">{props.todo}
+            <Toast.Body className="wrapper">
+                <div className="wrapper1">
+                <div className="todo">
+                {props.todo}
+                </div>
                 {filterState === "active" ?
+                <div className="symbol">
                     <div class="tick">
                         <Check2Square
                             color="green"
@@ -45,8 +50,13 @@ export default function TaskComponent(props) {
 
                             }
                         />
+                        
                     </div>
-                    : <BoxArrowDown
+                    </div>
+
+                    :
+                    <div className="symbol">
+                    <BoxArrowDown
                         data-toggle="tooltip"
                         class="tick"
                         title="Recover"
@@ -60,9 +70,13 @@ export default function TaskComponent(props) {
                         }}
 
                     />
-
+                  </div>
                 }
+               
+                <div className="footer">Created At {new Date(props.id).toDateString()}</div>
+                </div>
             </Toast.Body>
+            
         </Toast>
 
     )

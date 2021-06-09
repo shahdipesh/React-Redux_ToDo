@@ -4,3 +4,20 @@
     justify-content: space-evenly;
     margin-top:40px;
 }
+
+.loginRequest{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginText{
+    display:flex;
+    justify-content: center;
+}
+
+.googleButton{
+    display:flex;
+    justify-content: center;
+    margin-top:20px;
+}

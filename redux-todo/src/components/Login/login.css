@@ -1,0 +1,9 @@
+.loginHeader{
+    display:flex;
+    justify-content:center;
+    
+}
+
+.smiley{
+    margin-right: 10px;
+}
